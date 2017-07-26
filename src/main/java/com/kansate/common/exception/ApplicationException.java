@@ -2,6 +2,8 @@ package com.kansate.common.exception;
 
 public class ApplicationException extends RuntimeException {
 
+	private static final long serialVersionUID = 1L;
+
 	public ApplicationException() {
 	}
 

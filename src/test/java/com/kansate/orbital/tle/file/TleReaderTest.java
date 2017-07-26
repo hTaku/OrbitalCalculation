@@ -35,11 +35,11 @@ public class TleReaderTest extends TestCase {
 
 		{
 			OrbitalElementEntity actual = target.next();
-			assertThat(actual.getSatName(), is("SCD"));
+			assertThat(actual.getSatName(), is("SCD 1"));
 		}
 		{
 			OrbitalElementEntity actual = target.next();
-			assertThat(actual.getSatName(), is("TECHSAT"));
+			assertThat(actual.getSatName(), is("TECHSAT 1B (GO-32)"));
 		}
 	}
 

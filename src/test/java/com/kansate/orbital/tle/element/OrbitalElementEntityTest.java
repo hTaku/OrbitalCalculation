@@ -26,7 +26,7 @@ public class OrbitalElementEntityTest {
 
 		// ----------------------
 		// verify
-		assertThat(target.getSatName(), is("SCD"));
+		assertThat(target.getSatName(), is("SCD 1"));
 	}
 
 }

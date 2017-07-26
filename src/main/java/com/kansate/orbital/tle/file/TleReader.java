@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.kansate.orbital.tle.file;
 
 import java.io.File;

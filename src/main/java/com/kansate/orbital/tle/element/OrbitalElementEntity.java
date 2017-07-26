@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.kansate.orbital.tle.element;
 
 import java.math.BigDecimal;
@@ -18,8 +15,11 @@ public class OrbitalElementEntity {
 	/** 1衛星分の行数 */
 	public static int SAT_INFO_LINE_COUNT = 3;
 
+	/** 元期(年)*/
+	private int epochYear;
+
 	/** 元期(ET)*/
-	private BigDecimal epochTime;
+	private String epochTime;
 
 	/** 近地点引数(ω) */
 	private BigDecimal argumentOfPerigee;
@@ -46,11 +46,19 @@ public class OrbitalElementEntity {
 	private String satName;
 
 	/**
+	 * 元期(年)を取得する。
+	 *
+	 * @return 元期(年)
+	 */
+	public int getEpochYear() {
+		return epochYear;
+	}
+	/**
 	 * 元期(ET)を取得する。
 	 *
 	 * @return 元期(ET)
 	 */
-	public BigDecimal getEpochTime() {
+	public String getEpochTime() {
 		return epochTime;
 	}
 
@@ -135,14 +143,15 @@ public class OrbitalElementEntity {
 		verify(lines);
 
 		this.setSatName(EntityUtils.getItem(lines, OrbitalElementDefinition.SAT_NAME));
-		this.setEpochTime(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.EPOCH_TIME)));
+		this.setEpochYear(Integer.valueOf(EntityUtils.getItem(lines, OrbitalElementDefinition.EPOCH_YEAR)));
+		this.setEpochTime(EntityUtils.getItem(lines, OrbitalElementDefinition.EPOCH_TIME));
 		this.setArgumentOfPerigee(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.ARGUMENT_OF_PERIGEE)));
 		this.setInclinationAngle(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.INCLINATION_ANGLE)));
 		this.setRightAscensionOfAscendingNode(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.RIGHT_ASCENSION_OF_ASCENDING_NODE)));
-		this.setEccentricity(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.ECCENTRICITY)));
+		this.setEccentricity(new BigDecimal("0." + EntityUtils.getItem(lines, OrbitalElementDefinition.ECCENTRICITY)));
 		this.setMeanAnomaly(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.MEAN_ANOMALY)));
 		this.setMeanMotion(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.MEAN_MOTION)));
-		this.setMeanMotionCoefficientChange(new BigDecimal(EntityUtils.getItem(lines, OrbitalElementDefinition.MEAN_MOTION_COEFFICIENT_CHANGE)));
+		this.setMeanMotionCoefficientChange(new BigDecimal("0" + EntityUtils.getItem(lines, OrbitalElementDefinition.MEAN_MOTION_COEFFICIENT_CHANGE)));
 	}
 
 	/**
@@ -160,7 +169,11 @@ public class OrbitalElementEntity {
 		this.satName = satName;
 	}
 
-	private void setEpochTime(BigDecimal epochTime) {
+	private void setEpochYear(int epochYear) {
+		this.epochYear = epochYear;
+	}
+
+	private void setEpochTime(String epochTime) {
 		this.epochTime = epochTime;
 	}
 

@@ -18,13 +18,14 @@ public class EntityUtils {
 	public static String getItem(String[] lines, DefinitionInfo definitionInfo) {
 		String line = lines[definitionInfo.getLineNum()];
 		if (StringUtils.isNotEmpty(definitionInfo.getRegex())) {
-			int end = line.substring(definitionInfo.getStart()).indexOf(definitionInfo.getRegex());
+			int end = StringUtils.substring(line, definitionInfo.getStart()).indexOf(definitionInfo.getRegex());
 			if (end == -1) {
 				end = line.length();
 			}
 			definitionInfo.setEnd(end);
 		}
 
-		return line.substring(definitionInfo.getStart(), definitionInfo.getEnd());
+		String item = StringUtils.substring(line, definitionInfo.getStart(), definitionInfo.getEnd());
+		return StringUtils.trim(item);
 	}
 }
