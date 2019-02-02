@@ -29,8 +29,7 @@ public class OrbitalCalculator {
 		double dT = deltaT.getDelta(new BigDecimal(epochTime).doubleValue());
 
 		SemiMajorAxis semiMajorAxis = new SemiMajorAxis();
-		double mM = semiMajorAxis.getMeanmotionM(satelliteInfo.meanMotion, satelliteInfo.meanMotionCoefficientChange,
-				dT);
+		double mM = semiMajorAxis.getMeanmotionM(satelliteInfo.meanMotion, satelliteInfo.meanMotionCoefficientChange, dT);
 		double a = semiMajorAxis.getA(mM);
 
 		EccentricAnomaly eccentricAnomaly = new EccentricAnomaly();
@@ -71,7 +70,6 @@ public class OrbitalCalculator {
 
 	/**
 	 * 方位角を取得
-	 * 
 	 * @return 方位角
 	 */
 	public double getAngle() {
@@ -80,13 +78,9 @@ public class OrbitalCalculator {
 
 	/**
 	 * 仰角を取得
-	 * 
 	 * @return 仰角
-	 * 
 	 */
 	public double getElevation() {
 		return elevation;
 	}
-	
-	
 }
